@@ -33,3 +33,20 @@ WHERE Country = 'USA' AND Score > 500
 
 CREATE INDEX idx_DBCustomers_CountryScore
 ON DBCustomers(Country, Score)
+
+CREATE VIEW idx_Customers_Country AS
+    SELECT
+    *
+    FROM Customers
+    WHERE Country = 'USA'
+
+-- index management, monitoring
+SHOW INDEX FROM Customers
+
+SHOW INDEX FROM DBCustomers
+
+EXPLAIN SELECT * FROM Customers, DBCustomers
+
+OPTIMIZE TABLE idx_Customers_Country
+
+ANALYZE TABLE idx_Customers_Country
